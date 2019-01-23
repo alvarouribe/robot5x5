@@ -27,7 +27,7 @@ var schema = {
      console.log(err);
      return 1;
    } else {
-     if (result.option === 0) {
+     if (result.option == 0) {
        console.log('Thank you bye bye now.');  
      }
      
