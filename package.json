@@ -1,0 +1,22 @@
+{
+  "name": "robot5x5",
+  "version": "1.0.0",
+  "description": "This is a test for a job application made in 2019",
+  "main": "robot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alvarouribe/robot5x5.git"
+  },
+  "author": "Alvaro Uribe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alvarouribe/robot5x5/issues"
+  },
+  "homepage": "https://github.com/alvarouribe/robot5x5#readme",
+  "dependencies": {
+    "prompt": "^1.0.0"
+  }
+}
