@@ -6,11 +6,6 @@ class Robot5x5 {
     this.x = 0;
     this.y = 0;
     this.f = 'n';
-
-    console.log('- Robot 5x5 Started -');
-    console.log('x: ' + this.x);
-    console.log('y: ' + this.y);
-    console.log('f: ' + this.f);
   }
 
   /** 
@@ -151,10 +146,6 @@ class Robot5x5 {
     
     // console.clear();
     console.log("***************************************");
-    console.log(" Welcome to the tabletop robot game!");
-    console.log(" The tabletop is a 5x5 board and the origin (0,0) ");
-    console.log("can be considered to be the SOUTH WEST most corner.");
-    console.log();
     console.log(" Choose one of the options to start playing with the Robot:");
     console.log(" 0) EXIT");
     console.log(" 1) Place the robot in the tabletop (4,1,n)");
@@ -193,11 +184,19 @@ class Robot5x5 {
       this.runTests();
     }
     if (result.option > 6) {
-      console.log('That is not a valid option, please try again.');
+      console.clear();
+      console.log('!!! That is not a valid option, please try again. !!!');
+      console.log('');
     }
   }
   
   async start() {
+    console.clear();
+    console.log("***************************************");
+    console.log(" Welcome to the tabletop robot game!");
+    console.log(" The tabletop is a 5x5 board and the origin (0,0)");
+    console.log(" can be considered to be the SOUTH WEST most corner.");
+
     try {
       while (this.keepAsking) { 
         await this.launchMenu(); 
