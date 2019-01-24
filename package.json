@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/alvarouribe/robot5x5#readme",
   "dependencies": {
-    "prompt": "^1.0.0"
+    "prompt": "^1.0.0",
+    "prompt-async": "^0.9.9"
   }
 }
