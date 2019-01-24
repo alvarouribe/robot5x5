@@ -32,22 +32,22 @@ class Robot5x5 {
       case 'n':
         if (this.y + 1 < 5) { 
           this.y = this.y + 1; 
-        }
+        } else { console.log('Cannot move further to ' + this.f + ' direction'); }
       break;
       case 's':
         if (this.y - 1 >= 0) { 
           this.y = this.y - 1; 
-        }
+        } else { console.log('Cannot move further to ' + this.f + ' direction'); }
       break;
       case 'e':
         if (this.x + 1 < 5) { 
           this.x = this.x + 1; 
-        }
+        } else { console.log('Cannot move further to ' + this.f + ' direction'); }
       break;
       case 'w':
         if (this.x - 1 >= 0) { 
           this.x = this.x - 1; 
-        }
+        } else { console.log('Cannot move further to ' + this.f + ' direction'); }
       break;           
       default: 
         console.log('this.MOVE() Default switch'); 
@@ -81,7 +81,7 @@ class Robot5x5 {
   }
 
   report() {
-    // console.clear();
+    console.clear();
     console.log(' --- REPORT ---');
     console.log('X: ' + this.x);
     console.log('Y: ' + this.y);
@@ -143,7 +143,7 @@ class Robot5x5 {
       properties: {
         option: {
           pattern: /^[0-6]/,
-          message: 'Please choose from 0 to 5',
+          message: 'Please choose from 0 to 6',
           required: true
         }
       }
@@ -151,21 +151,24 @@ class Robot5x5 {
     
     // console.clear();
     console.log("***************************************");
-    console.log("** Welcome to the tabletop robot game!");
-    console.log("** Choose one of the options to activate the Robot:");
-    console.log("** 0) EXIT");
-    console.log("** 1) Place the robot in the tabletop");
-    console.log("** 2) Move the Robot FORWARD");
-    console.log("** 3) Turn the Robot to the LEFT");
-    console.log("** 4) Turn the Robot to the RIGHT");
-    console.log("** 5) Report");  
-    console.log("** 6) Run tests");  
+    console.log(" Welcome to the tabletop robot game!");
+    console.log(" The tabletop is a 5x5 board and the origin (0,0) ");
+    console.log("can be considered to be the SOUTH WEST most corner.");
+    console.log();
+    console.log(" Choose one of the options to start playing with the Robot:");
+    console.log(" 0) EXIT");
+    console.log(" 1) Place the robot in the tabletop (4,1,n)");
+    console.log(" 2) Move the Robot FORWARD");
+    console.log(" 3) Turn the Robot to the LEFT");
+    console.log(" 4) Turn the Robot to the RIGHT");
+    console.log(" 5) Report");  
+    console.log(" 6) Run tests");  
     console.log("***************************************");
     
     const result = await prompt.get(schema);
          
     if (result.option == 0) {
-      console.log('Ok, ByeBye Now!');
+      console.log('Ok, Bye Bye Now!');
       this.keepAsking = false;
     }
     if (result.option == 1) {
@@ -188,6 +191,9 @@ class Robot5x5 {
     }
     if (result.option == 6) {
       this.runTests();
+    }
+    if (result.option > 6) {
+      console.log('That is not a valid option, please try again.');
     }
   }
   

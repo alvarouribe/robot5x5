@@ -4,7 +4,7 @@
   "description": "This is a test for a job application made in 2019",
   "main": "robot.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node robot5x5.js"
   },
   "repository": {
     "type": "git",
