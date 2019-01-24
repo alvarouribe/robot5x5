@@ -1,122 +1,143 @@
 const prompt = require("prompt-async");
 
-let keepAsking = true;
-let x = 0;
-let y = 0;
-let f = 'n';
+class Robot5x5 {
+  constructor() {
+    this.keepAsking = true;
+    this.x = 0;
+    this.y = 0;
+    this.f = 'n';
 
- /** 
- * place() sets the position of the robot in the 5x5 board. 
- **/
-function place(xAxis, yAxis, facingRobot) {
-  x = xAxis;
-  y = yAxis;
-  f = facingRobot;
-  console.log('place('+x+','+y+','+f+')');
-}
-
-/** 
- * move() will move forward the robot if it is inside the board limits. 
- **/
-function move() {
-  // console.log('move('+f+')');
-  switch(f) {
-    case 'n':
-      if (y + 1 < 5) y = y + 1;
-    break;
-    case 's':
-      if (y - 1 >= 0) y = y - 1;
-    break;
-    case 'e':
-      if (x + 1 < 5) x = x + 1;
-    break;
-    case 'w':
-      if (x - 1 >= 0) x = x - 1;
-    break;           
-    default: 
-      console.log('MOVE DEFAULT'); 
+    console.log('- Robot 5x5 Started -');
+    console.log('x: ' + this.x);
+    console.log('y: ' + this.y);
+    console.log('f: ' + this.f);
   }
-}
 
-/**
- * left() sets the new position of the robot counter clockwise
- */
-function left() {
-  let leftArray = ["w","s","e","n"];
-  nextFacingPosition(leftArray);
-}
-
-/**
- * right() sets the new position of the robot clockwise
- */
-function right() {
-  let rightArray = ["w","n","e","s"];
-  nextFacingPosition(rightArray);
-}
-
-/**
- * nextFacingPosition() sets the facing position of the robot from the next position of an array
- */
-function nextFacingPosition(zArray) {
-  let index = zArray.indexOf(f);
-  if (index >= 0 && index < zArray.length - 1) {
-    f = zArray[index+1];
-  } else {
-    f = zArray[0];
+  /** 
+   * place() sets the position of the robot in the 5x5 board. 
+   **/
+  place(xAxis, yAxis, facingRobot) {
+    this.x = xAxis;
+    this.y = yAxis;
+    this.f = facingRobot;
+    console.log('place(' + this.x + ',' + this.y + ',' + this.f + ')');
   }
-}
 
-function report() {
-  // console.clear();
-  console.log('REPORT:');
-  console.log('X: '+x);
-  console.log('Y: '+y);
-  console.log('F: '+f);
-}
-
-function test1() {
-  place(0,0,'n');
-  move();
-  if (x==0 && y==1 && f=='n') {
-    console.log('Test 1 passed :D');
-    console.log('');
-  }else {
-    console.log('Test 1 Did Not Pass');
-    report();
+  /** 
+   * this.move() will move forward the robot if it is inside the board limits. 
+   **/
+  move() {
+    // console.log('move('+this.f+')');
+    switch(this.f) {
+      case 'n':
+        if (this.y + 1 < 5) { 
+          this.y = this.y + 1; 
+        }
+      break;
+      case 's':
+        if (this.y - 1 >= 0) { 
+          this.y = this.y - 1; 
+        }
+      break;
+      case 'e':
+        if (this.x + 1 < 5) { 
+          this.x = this.x + 1; 
+        }
+      break;
+      case 'w':
+        if (this.x - 1 >= 0) { 
+          this.x = this.x - 1; 
+        }
+      break;           
+      default: 
+        console.log('this.MOVE() Default switch'); 
+    }
   }
-}
 
-function test2() {
-  place(0,0,'n');
-  left();
-  
-  if (x==0 && y==0 && f=='w') {
-    console.log('Test 2 passed :D');
-    console.log('');
-  }else {
-    console.log('Test 2 Did Not Pass');
-    report();
+  /**
+   * this.left() sets the new position of the robot counter clockwise
+   */
+  left() {
+    this.nextArrayItem(["w","s","e","n"]);
   }
-}
 
-function test3() {
-  place(1,2,'e');
-  move();
-  move();
-  left();
-  move();
-  
-  if (x==3 && y==3 && f=='n') {
-    console.log('Test 3 passed :D');
-    console.log('');
-  }else {
-    console.log('Test 3 Did Not Pass');
-    report();
+  /**
+   * this.right() sets the new position of the robot clockwise
+   */
+  right() {
+    this.nextArrayItem(["w","n","e","s"]);
   }
-}
 
-async function launchMenu() // Available only with `prompt-async`!
-{
+  /**
+   * nextArrayItem() sets the facing position of the robot from the next position of an array
+   */
+  nextArrayItem(zArray) {
+    let index = zArray.indexOf(this.f);
+    if (index >= 0 && index < zArray.length - 1) {
+      this.f = zArray[index+1];
+    } else {
+      this.f = zArray[0];
+    }
+  }
+
+  report() {
+    // console.clear();
+    console.log(' --- REPORT ---');
+    console.log('X: ' + this.x);
+    console.log('Y: ' + this.y);
+    console.log('F: ' + this.f);
+    console.log(' --- REPORT ---');
+  }
+
+  runTests() {
+    this.test1();
+    this.test2();
+    this.test3();
+    this.keepAsking = false;
+  }
+
+  test1() {
+    this.place(0,0,'n');
+    this.move();
+    if (this.x==0 && this.y==1 && this.f=='n') {
+      console.log('Test 1 passed :D');
+      console.log('');
+    }else {
+      console.log('Test 1 Did Not Pass');
+      this.report();
+    }
+  }
+
+  test2() {
+    this.place(0,0,'n');
+    this.left();
+    
+    if (this.x==0 && this.y==0 && this.f=='w') {
+      console.log('Test 2 passed :D');
+      console.log('');
+    }else {
+      console.log('Test 2 Did Not Pass');
+      this.report();
+    }
+  }
+
+  test3() {
+    this.place(1,2,'e');
+    this.move();
+    this.move();
+    this.left();
+    this.move();
+    
+    if (this.x==3 && this.y==3 && this.f=='n') {
+      console.log('Test 3 passed :D');
+      console.log('');
+    }else {
+      console.log('Test 3 Did Not Pass');
+      this.report();
+    }
+  }
+
+  async launchMenu() {
     prompt.start();
     let schema = {
       properties: {
@@ -130,62 +151,58 @@ async function launchMenu() // Available only with `prompt-async`!
     
     // console.clear();
     console.log("***************************************");
-    console.log("** Welcome to the tabletop robot game! **");
-    console.log("** Choose one of the options to activate the Robot: **");
-    console.log("** 0 EXIT **");
-    console.log("** 1 Place the robot in the tabletop **");
-    console.log("** 2 Move the Robot FORWARD **");
-    console.log("** 3 Turn the Robot to the LEFT **");
-    console.log("** 4 Turn the Robot to the RIGHT **");
-    console.log("** 5 Report **");  
-    console.log("** 6 Run tests **");  
+    console.log("** Welcome to the tabletop robot game!");
+    console.log("** Choose one of the options to activate the Robot:");
+    console.log("** 0) EXIT");
+    console.log("** 1) Place the robot in the tabletop");
+    console.log("** 2) Move the Robot FORWARD");
+    console.log("** 3) Turn the Robot to the LEFT");
+    console.log("** 4) Turn the Robot to the RIGHT");
+    console.log("** 5) Report");  
+    console.log("** 6) Run tests");  
     console.log("***************************************");
     
     const result = await prompt.get(schema);
          
     if (result.option == 0) {
-      keepAsking = false;
+      console.log('Ok, ByeBye Now!');
+      this.keepAsking = false;
     }
     if (result.option == 1) {
-      console.log('Option 1 Place run prompt');
+      await this.placePrompt();
     }
     if (result.option == 2) {
-      move();
-      report();
-      // console.log('Option 2 Place run prompt');
+      this.move();
+      this.report();
     }
     if (result.option == 3) {
-      left();
-      report();
+      this.left();
+      this.report();
     }
     if (result.option == 4) {
-      right();
-      report();
+      this.right();
+      this.report();
     }
     if (result.option == 5) {
-      report();
+      this.report();
     }
     if (result.option == 6) {
-      runTests();
+      this.runTests();
     }
-}
- 
-async function run()
-{
-    try
-    {
-      while (keepAsking) { 
-        await launchMenu(); 
+  }
+  
+  async start() {
+    try {
+      while (this.keepAsking) { 
+        await this.launchMenu(); 
       }
     }
-    catch(error)
-    {
-        console.error("An error occurred: ", error);
+    catch(error) {
+      console.error("An error occurred: ", error);
     }
-}
- 
-async function launchPlacePrompt()
-{
+  }
+  
+  async launchPlacePrompt() {
     prompt.start();
     let schema = {
       properties: {
@@ -206,26 +223,21 @@ async function launchPlacePrompt()
         }
       }
     };
-}
+    const result = await prompt.get(schema);
+    this.x = result.xAxis;
+    this.y = result.yAxis;
+    this.f = result.facingPosition;
+  }
 
-async function placePrompt()
-{
-    try
-    {
-      while (keepAsking) { 
-        await launchPlacePrompt(); 
-      }
+  async placePrompt() {
+    try {
+      await this.launchPlacePrompt(); 
     }
-    catch(error)
-    {
-        console.error("An error occurred: ", error);
+    catch(error) {
+      console.error("An error occurred: ", error);
     }
+  }
 }
 
-run();
-
-function runTests() {
-  test1();
-  test2();
-  test3();
-}
+const Robot = new Robot5x5();
+Robot.start();
