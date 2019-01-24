@@ -7,7 +7,7 @@ async function launchMenu() // Available only with `prompt-async`!
     let schema = {
       properties: {
         option: {
-          pattern: /^[0-5]/,
+          pattern: /^[0-6]/,
           message: 'Please choose from 0 to 5',
           required: true
         }
@@ -17,13 +17,14 @@ async function launchMenu() // Available only with `prompt-async`!
     console.clear();
     console.log("***************************************");
     console.log("** Welcome to the tabletop robot game! **");
-    console.log("** Choose one of the options to move the Robot: **");
+    console.log("** Choose one of the options to activate the Robot: **");
     console.log("** 0 EXIT **");
     console.log("** 1 Place the robot in the tabletop **");
     console.log("** 2 Move the Robot FORWARD **");
     console.log("** 3 Turn the Robot to the LEFT **");
     console.log("** 4 Turn the Robot to the RIGHT **");
     console.log("** 5 Report **");  
+    console.log("** 6 Run tests **");  
     console.log("***************************************");
     
     const result = await prompt.get(schema);
@@ -33,7 +34,7 @@ async function launchMenu() // Available only with `prompt-async`!
     }
 }
  
-async function error_handling_async()
+async function run()
 {
     try
     {
@@ -47,4 +48,4 @@ async function error_handling_async()
     }
 }
  
-error_handling_async();
+run();
