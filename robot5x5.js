@@ -1,6 +1,14 @@
 const prompt = require("prompt-async");
 var keepAsking = true;
 
+/** place() sets the position of the robot in the 5x5 board. */
+function place(xAxis, yAxis, facingRobot) {
+  x = xAxis;
+  y = yAxis;
+  f = facingRobot;
+  console.log('place('+x+','+y+','+f+')');
+}
+
 async function launchMenu() // Available only with `prompt-async`!
 {
     prompt.start();
