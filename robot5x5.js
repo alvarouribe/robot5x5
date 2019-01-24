@@ -27,26 +27,22 @@ class Robot5x5 {
       case 'n':
         if (this.y + 1 < 5) { 
           this.y = this.y + 1; 
-        } else { 
-          console.log(this.y + 1 < 5);
-          console.log(this.y + 1);
-          console.log('y: '+this.y+' Cannot move further to ' + this.f + ' direction'); 
-        }
+        } else { console.log('!!! Cannot move further to ' + this.f + ' direction !!!'); }
       break;
       case 's':
         if (this.y - 1 >= 0) { 
           this.y = this.y - 1; 
-        } else { console.log('Cannot move further to ' + this.f + ' direction'); }
+        } else { console.log('!!! Cannot move further to ' + this.f + ' direction !!!'); }
       break;
       case 'e':
         if (this.x + 1 < 5) { 
           this.x = this.x + 1; 
-        } else { console.log('Cannot move further to ' + this.f + ' direction'); }
+        } else { console.log('!!! Cannot move further to ' + this.f + ' direction !!!'); }
       break;
       case 'w':
         if (this.x - 1 >= 0) { 
           this.x = this.x - 1; 
-        } else { console.log('Cannot move further to ' + this.f + ' direction'); }
+        } else { console.log('!!! Cannot move further to ' + this.f + ' direction !!!'); }
       break;           
       default: 
         console.log('this.MOVE() Default switch'); 
