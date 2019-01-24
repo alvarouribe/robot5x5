@@ -12,10 +12,10 @@ class Robot5x5 {
    * place() sets the position of the robot in the 5x5 board. 
    **/
   place(xAxis, yAxis, facingRobot) {
-    this.x = xAxis;
-    this.y = yAxis;
+    this.x = parseInt(xAxis);
+    this.y = parseInt(yAxis);
     this.f = facingRobot;
-    console.log('place(' + this.x + ',' + this.y + ',' + this.f + ')');
+    // console.log('place(' + this.x + ',' + this.y + ',' + this.f + ')');
   }
 
   /** 
@@ -27,7 +27,11 @@ class Robot5x5 {
       case 'n':
         if (this.y + 1 < 5) { 
           this.y = this.y + 1; 
-        } else { console.log('Cannot move further to ' + this.f + ' direction'); }
+        } else { 
+          console.log(this.y + 1 < 5);
+          console.log(this.y + 1);
+          console.log('y: '+this.y+' Cannot move further to ' + this.f + ' direction'); 
+        }
       break;
       case 's':
         if (this.y - 1 >= 0) { 
@@ -76,7 +80,6 @@ class Robot5x5 {
   }
 
   report() {
-    console.clear();
     console.log(' --- REPORT ---');
     console.log('X: ' + this.x);
     console.log('Y: ' + this.y);
@@ -155,7 +158,7 @@ class Robot5x5 {
     console.log(" 5) Report");  
     console.log(" 6) Run tests");  
     console.log("***************************************");
-    
+
     const result = await prompt.get(schema);
          
     if (result.option == 0) {
@@ -229,9 +232,8 @@ class Robot5x5 {
       }
     };
     const result = await prompt.get(schema);
-    this.x = result.xAxis;
-    this.y = result.yAxis;
-    this.f = result.facingPosition;
+
+    this.place(result.xAxis, result.yAxis, result.facingPosition);
   }
 
   async placePrompt() {
