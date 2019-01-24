@@ -74,7 +74,9 @@ class Robot5x5 {
       this.f = zArray[0];
     }
   }
-
+  /**
+   * report() gives a report on the robot position
+   */
   report() {
     console.log(' --- REPORT ---');
     console.log('X: ' + this.x);
@@ -83,6 +85,9 @@ class Robot5x5 {
     console.log(' --- REPORT ---');
   }
 
+  /**
+   * runTests() easy tests execution
+   */
   runTests() {
     this.test1();
     this.test2();
@@ -93,7 +98,7 @@ class Robot5x5 {
   test1() {
     this.place(0,0,'n');
     this.move();
-    if (this.x==0 && this.y==1 && this.f=='n') {
+    if (this.x == 0 && this.y == 1 && this.f == 'n') {
       console.log('Test 1 passed :D');
       console.log('');
     }else {
@@ -106,7 +111,7 @@ class Robot5x5 {
     this.place(0,0,'n');
     this.left();
     
-    if (this.x==0 && this.y==0 && this.f=='w') {
+    if (this.x == 0 && this.y == 0 && this.f == 'w') {
       console.log('Test 2 passed :D');
       console.log('');
     }else {
@@ -122,7 +127,7 @@ class Robot5x5 {
     this.left();
     this.move();
     
-    if (this.x==3 && this.y==3 && this.f=='n') {
+    if (this.x == 3 && this.y == 3 && this.f == 'n') {
       console.log('Test 3 passed :D');
       console.log('');
     }else {
