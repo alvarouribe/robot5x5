@@ -140,7 +140,7 @@ class Robot5x5 {
     let schema = {
       properties: {
         option: {
-          pattern: /^[0-6]/,
+          pattern: /^[0-6]{1}\b/,
           message: 'Please choose from 0 to 6',
           required: true
         }
@@ -213,12 +213,12 @@ class Robot5x5 {
     let schema = {
       properties: {
         xAxis: {
-          pattern: /^[0-4]/,
+          pattern: /^[0-4]{1}\b/,
           message: 'Please choose from 0 to 4',
           required: true
         },
         yAxis: {
-          pattern: /^[0-4]/,
+          pattern: /^[0-4]{1}\b/,
           message: 'Please choose from 0 to 4',
           required: true
         },
