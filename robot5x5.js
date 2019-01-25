@@ -73,6 +73,7 @@ class Robot5x5 {
       this.f = zArray[0];
     }
   }
+  
   /**
    * report() gives a report on the robot position
    */
