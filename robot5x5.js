@@ -14,7 +14,7 @@ class Robot5x5 {
   place(xAxis, yAxis, facingRobot) {
     this.x = parseInt(xAxis);
     this.y = parseInt(yAxis);
-    this.f = facingRobot;
+    this.f = facingRobot.toLowerCase();
     // console.log('place(' + this.x + ',' + this.y + ',' + this.f + ')');
   }
 
@@ -22,7 +22,6 @@ class Robot5x5 {
    * this.move() will move forward the robot if it is inside the board limits. 
    **/
   move() {
-    // console.log('move('+this.f+')');
     switch(this.f) {
       case 'n':
         if (this.y + 1 < 5) { 
@@ -78,11 +77,10 @@ class Robot5x5 {
    * report() gives a report on the robot position
    */
   report() {
-    console.log(' --- REPORT ---');
-    console.log('X: ' + this.x);
-    console.log('Y: ' + this.y);
-    console.log('F: ' + this.f);
-    console.log(' --- REPORT ---');
+    console.log(' REPORT:');
+    console.log();
+    console.log('[ X: ' + this.x + ' Y: ' + this.y + ' F: ' + this.f + ' ]');
+    console.log();
   }
 
   /**
@@ -100,7 +98,7 @@ class Robot5x5 {
     this.move();
     if (this.x == 0 && this.y == 1 && this.f == 'n') {
       console.log('Test 1 passed :D');
-      console.log('');
+      console.log();
     }else {
       console.log('Test 1 Did Not Pass');
       this.report();
@@ -113,7 +111,7 @@ class Robot5x5 {
     
     if (this.x == 0 && this.y == 0 && this.f == 'w') {
       console.log('Test 2 passed :D');
-      console.log('');
+      console.log();
     }else {
       console.log('Test 2 Did Not Pass');
       this.report();
@@ -129,7 +127,7 @@ class Robot5x5 {
     
     if (this.x == 3 && this.y == 3 && this.f == 'n') {
       console.log('Test 3 passed :D');
-      console.log('');
+      console.log();
     }else {
       console.log('Test 3 Did Not Pass');
       this.report();
@@ -159,6 +157,7 @@ class Robot5x5 {
     console.log(" 5) Report");  
     console.log(" 6) Run tests");  
     console.log("***************************************");
+    this.report();
 
     const result = await prompt.get(schema);
          
@@ -171,15 +170,12 @@ class Robot5x5 {
     }
     if (result.option == 2) {
       this.move();
-      this.report();
     }
     if (result.option == 3) {
       this.left();
-      this.report();
     }
     if (result.option == 4) {
       this.right();
-      this.report();
     }
     if (result.option == 5) {
       this.report();
@@ -190,7 +186,7 @@ class Robot5x5 {
     if (result.option > 6) {
       console.clear();
       console.log('!!! That is not a valid option, please try again. !!!');
-      console.log('');
+      console.log();
     }
   }
   
