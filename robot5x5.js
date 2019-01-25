@@ -147,7 +147,7 @@ class Robot5x5 {
       }
     };
     
-    console.clear();
+    // console.clear();
     console.log("***************************************");
     console.log(" Choose one of the options to start playing with the Robot:");
     console.log(" 0) EXIT");
@@ -161,33 +161,39 @@ class Robot5x5 {
     this.report();
 
     const result = await prompt.get(schema);
-         
-    if (result.option == 0) {
-      console.log('Ok, Bye Bye Now!');
-      this.keepAsking = false;
-    }
-    if (result.option == 1) {
-      await this.placePrompt();
-    }
-    if (result.option == 2) {
-      this.move();
-    }
-    if (result.option == 3) {
-      this.left();
-    }
-    if (result.option == 4) {
-      this.right();
-    }
-    if (result.option == 5) {
-      this.report();
-    }
-    if (result.option == 6) {
-      this.runTests();
-    }
-    if (result.option > 6) {
-      console.clear();
-      console.log('!!! That is not a valid option, please try again. !!!');
-      console.log();
+
+    switch(parseInt(result.option)) {
+      case 0:
+        console.log('Ok, Bye Bye Now!');
+        this.keepAsking = false;
+      break;
+
+      case 1:
+        await this.placePrompt();
+      break;
+
+      case 2:
+        this.move();
+      break;
+
+      case 3:
+        this.left();
+      break;
+
+      case 4:
+        this.right();
+      break;
+
+      case 5:
+        this.report();
+      break;
+
+      case 6:
+        this.runTests();
+      break;
+      
+      default: 
+        console.log('!!! That is not a valid option, please try again. !!!');
     }
   }
   
