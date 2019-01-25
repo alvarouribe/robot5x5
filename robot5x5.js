@@ -73,7 +73,7 @@ class Robot5x5 {
       this.f = zArray[0];
     }
   }
-  
+
   /**
    * report() gives a report on the robot position
    */
@@ -223,7 +223,7 @@ class Robot5x5 {
           required: true
         },
         facingPosition: {
-          pattern: /^[nsweNSWE]/,
+          pattern: /^[nswe]/i,
           message: 'Please choose from N, S, W, E',
           required: true
         }
