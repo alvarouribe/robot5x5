@@ -25,22 +25,22 @@ class Robot5x5 {
     switch(this.f) {
       case 'n':
         if (this.y + 1 < 5) { 
-          this.y = this.y + 1; 
+          this.y += 1; 
         } else { console.log('!!! Cannot move further to ' + this.f + ' direction !!!'); }
       break;
       case 's':
         if (this.y - 1 >= 0) { 
-          this.y = this.y - 1; 
+          this.y -= 1; 
         } else { console.log('!!! Cannot move further to ' + this.f + ' direction !!!'); }
       break;
       case 'e':
         if (this.x + 1 < 5) { 
-          this.x = this.x + 1; 
+          this.x += 1; 
         } else { console.log('!!! Cannot move further to ' + this.f + ' direction !!!'); }
       break;
       case 'w':
         if (this.x - 1 >= 0) { 
-          this.x = this.x - 1; 
+          this.x -= 1; 
         } else { console.log('!!! Cannot move further to ' + this.f + ' direction !!!'); }
       break;           
       default: 
@@ -146,7 +146,7 @@ class Robot5x5 {
       }
     };
     
-    // console.clear();
+    console.clear();
     console.log("***************************************");
     console.log(" Choose one of the options to start playing with the Robot:");
     console.log(" 0) EXIT");
